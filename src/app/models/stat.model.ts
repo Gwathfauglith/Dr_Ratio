@@ -28,7 +28,7 @@ export class Stat {
 }
 
 /**
- * This class describes a flat statistic such as Attack.
+ * This class describes a percentage statistic such as crit damage.
  * 
  * Methods :
  * 
