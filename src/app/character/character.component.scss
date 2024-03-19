@@ -1,6 +1,11 @@
-.face-snap-card {
-    width: 37%;
+.character {
+  height: 100%;
     img {
-      width: 100%;
+      margin: auto;
+      display: block;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
     }
+  overflow: hidden;
   }

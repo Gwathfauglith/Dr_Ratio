@@ -9,13 +9,13 @@ export class Stat {
 
     name: string;
     base: number;
-    facteur: number;
+    factor: number;
     bonus: number;
 
-    constructor(name: string, base: number, facteur: number, bonus: number) {
+    constructor(name: string, base: number, factor: number, bonus: number) {
         this.name = name;
         this.base = base;
-        this.facteur = facteur;
+        this.factor = factor;
         this.bonus = bonus;
     }
 
@@ -23,7 +23,7 @@ export class Stat {
     * @returns Value of this stat with applied modifiers.
     */
     value() {
-        return this.base * (1 + this.facteur / 100) + this.bonus;
+        return this.base * (1 + this.factor / 100) + this.bonus;
     }
 }
 
@@ -37,7 +37,43 @@ export class Stat {
 export class Stat_Percentage extends Stat {
 
     override value() {
-        return ((this.base * (1 + this.facteur / 100) + this.bonus) / 100);
+        return ((this.base * (1 + this.factor / 100) + this.bonus) / 100);
+    }
+}
+
+/**
+ * This class is the full set of statistics owned by any character
+ */
+export class Stats_Collection {
+
+    hp: Stat;
+    attack: Stat;
+    defense: Stat;
+    speed: Stat;
+    crit_rate: Stat_Percentage;
+    crit_damage: Stat_Percentage;
+    resistance: Stat_Percentage;
+    effect_hit_rate: Stat_Percentage;
+    energy_recharge: Stat_Percentage;
+    elemental_damage: Stat_Percentage;
+    healing_boost: Stat_Percentage;
+    break_effect: Stat_Percentage;
+    damage_boost: Stat_Percentage;
+
+    constructor(hp: Stat, attack: Stat, defense: Stat, speed: Stat, crit_rate: Stat_Percentage, crit_damage: Stat_Percentage, resistance: Stat_Percentage, effect_hit_rate: Stat_Percentage, energy_recharge: Stat_Percentage, elemental_damage: Stat_Percentage, healing_boost: Stat_Percentage, break_effect: Stat_Percentage, damage_boost: Stat_Percentage,) {
+        this.hp = hp;
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
+        this.crit_rate = crit_rate;
+        this.crit_damage = crit_damage;
+        this.resistance = resistance;
+        this.effect_hit_rate = effect_hit_rate;
+        this.energy_recharge = energy_recharge;
+        this.elemental_damage = elemental_damage;
+        this.healing_boost = healing_boost;
+        this.break_effect = break_effect;
+        this.damage_boost = damage_boost;
     }
 }
 
@@ -45,12 +81,12 @@ export class Stat_Modifier {
 
     stat: string;
     modifier: number;
-    facteur: number;
+    factor: number;
 
     constructor(stat: string, modifier: number) {
         this.stat = stat;
         this.modifier = modifier;
-        this.facteur = modifier / 100;
+        this.factor = modifier / 100;
     }
 
 }
